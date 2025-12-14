@@ -25,22 +25,25 @@
     <link rel="apple-touch-icon" href="./icon-192.png">
 </head>
 <body>
-    <!-- Loading Screen -->
+   <!-- Loading/Sign-In Screen -->
     <div id="loadingScreen" class="screen active">
         <div class="loading-container">
             <div class="loading-emoji">💪</div>
-            <div class="loading-text">Loading My Workout Tracker...</div>
-        </div>
-    </div>
-    
-    <!-- Access Denied Screen -->
-    <div id="accessDeniedScreen" class="screen">
-        <div class="access-denied-container">
-            <div class="access-denied-icon">🚫</div>
-            <h1 class="access-denied-title">Access Denied</h1>
-            <p class="access-denied-message">Contact admin for access.</p>
-            <div class="access-denied-email">
-                Your email: <strong id="deniedUserEmail"></strong>
+            <div class="loading-text">My Workout Tracker</div>
+            <div style="margin-top: 30px;">
+                <div id="g_id_onload"
+                     data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                     data-callback="handleCredentialResponse"
+                     data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-size="large"
+                     data-theme="filled_blue"
+                     data-text="sign_in_with"
+                     data-shape="rectangular"
+                     data-logo_alignment="left">
+                </div>
             </div>
         </div>
     </div>
