@@ -4,7 +4,7 @@
 // ========== CONFIGURATION ==========
 
 // ⚠️ IMPORTANT: Replace this with your Google Apps Script Web App URL
-const API_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const API_URL = 'https://script.google.com/macros/s/AKfycbxkkcpo5y-Yfc4iTmN9FiOJf6nXgXHVZRlLIwqZiWzG7f3TpMh3ccEFVm2-3tT-PMyV/exec';
 // Example: 'https://script.google.com/macros/s/AKfycby...xyz123.../exec'
 
 // ========== GLOBAL STATE ==========
