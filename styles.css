@@ -1,0 +1,533 @@
+/* My Workout Tracker - Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Loading Screen */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.loading-emoji {
+    font-size: 64px;
+    margin-bottom: 20px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.loading-text {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Access Denied Screen */
+.access-denied-container {
+    max-width: 500px;
+    margin: 100px auto;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.access-denied-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.access-denied-title {
+    color: #ef4444;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.access-denied-message {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.access-denied-email {
+    color: #999;
+    font-size: 14px;
+    padding: 15px;
+    background: #f9fafb;
+    border-radius: 10px;
+    word-break: break-all;
+}
+
+/* Main Container */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* Header */
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.app-header h1 {
+    margin: 0;
+    text-align: left;
+}
+
+/* Status Indicators */
+.status-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.status-indicator {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-online {
+    background: #10b981;
+    color: white;
+}
+
+.status-offline {
+    background: #ef4444;
+    color: white;
+}
+
+.status-syncing {
+    background: #f59e0b;
+    color: white;
+}
+
+#syncStatus {
+    display: none;
+    padding: 10px;
+    background: #10b981;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Messages */
+.success-message,
+.error-message {
+    display: none;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.success-message {
+    background: #10b981;
+    color: white;
+}
+
+.error-message {
+    background: #ef4444;
+    color: white;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Row Layouts */
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Exercise Items */
+.exercise-item {
+    background: #f0f4ff;
+    border: 2px solid #667eea;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.exercise-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #667eea;
+}
+
+.exercise-header > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.exercise-number {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 16px;
+}
+
+.remove-exercise-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+}
+
+.remove-exercise-btn:hover {
+    background: #dc2626;
+}
+
+.exercise-inputs {
+    margin-bottom: 15px;
+}
+
+.exercise-inputs label {
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.exercise-inputs input,
+.exercise-inputs select {
+    margin-bottom: 10px;
+}
+
+/* Sets */
+.sets-container-wrapper {
+    margin-top: 15px;
+}
+
+.sets-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.set-item {
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.set-header {
+    margin-bottom: 12px;
+}
+
+.set-header > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.set-number {
+    font-weight: 600;
+    color: #667eea;
+    font-size: 14px;
+}
+
+.remove-set-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+}
+
+.remove-set-btn:hover {
+    background: #dc2626;
+}
+
+.set-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.set-input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.set-input-group label {
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.set-input-group input,
+.set-input-group select {
+    padding: 8px;
+    font-size: 14px;
+}
+
+/* Buttons */
+.add-set-btn {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: #667eea;
+    border: 2px dashed #667eea;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 10px;
+}
+
+.add-set-btn:hover {
+    background: #f5f7ff;
+    border-color: #764ba2;
+    color: #764ba2;
+}
+
+.exercise-item .add-set-btn {
+    background: #e0e7ff;
+    border-color: #667eea;
+}
+
+button[type="submit"],
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover,
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+button[type="submit"]:disabled,
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading State */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Profile Button */
+.profile-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    transition: all 0.2s;
+}
+
+.profile-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .row {
+        grid-template-columns: 1fr;
+    }
+    
+    .set-inputs {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+}
+
+/* PWA Install Prompt */
+.install-prompt {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 1000;
+}
+
+.install-prompt.show {
+    display: block;
+}
+
+.install-prompt-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.install-prompt-icon {
+    font-size: 40px;
+}
+
+.install-prompt-text h3 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.install-prompt-text p {
+    color: #666;
+    font-size: 14px;
+}
+
+.install-prompt-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.install-prompt-actions button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.install-btn {
+    background: #667eea;
+    color: white;
+}
+
+.dismiss-btn {
+    background: #e5e7eb;
+    color: #666;
+}

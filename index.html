@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="My Workout Tracker">
+    <meta name="description" content="Track your workout progress offline and online">
+    
+    <title>My Workout Tracker</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles.css">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+    <link rel="apple-touch-icon" href="./icon-192.png">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="screen active">
+        <div class="loading-container">
+            <div class="loading-emoji">💪</div>
+            <h2 style="color: white; margin: 20px 0 10px;">My Workout Tracker</h2>
+            <p style="color: white; margin-bottom: 30px;">Sign in to continue</p>
+            
+            <div style="background: white; padding: 30px; border-radius: 15px; max-width: 350px; width: 100%;">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginUsername">Username</label>
+                        <input type="text" id="loginUsername" required placeholder="Enter username" autocomplete="username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required placeholder="Enter password" autocomplete="current-password">
+                    </div>
+                    
+                    <div id="loginError" style="display: none; color: #ef4444; margin-bottom: 15px; text-align: center; font-size: 14px;"></div>
+                    
+                    <button type="submit" class="submit-btn">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Access Denied Screen -->
+    <div id="accessDeniedScreen" class="screen">
+        <div class="access-denied-container">
+            <div class="access-denied-icon">🚫</div>
+            <h1 class="access-denied-title">Access Denied</h1>
+            <p class="access-denied-message" id="deniedMessage">Invalid credentials</p>
+            <button onclick="showScreen('loginScreen')" style="margin-top: 20px; padding: 12px 24px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">Try Again</button>
+        </div>
+    </div>
+    
+    <!-- Main App Screen -->
+    <div id="mainAppScreen" class="screen">
+        <div style="padding: 20px;">
+            <div class="container">
+                <div class="app-header">
+                    <h1>💪 My Workout Tracker</h1>
+                    <button id="logoutBtn" style="background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600;">Logout</button>
+                </div>
+                <p class="subtitle">Log your workout progress</p>
+                
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <div id="onlineStatus" class="status-indicator status-online">✅ Online</div>
+                </div>
+                
+                <div id="syncStatus"></div>
+                
+                <div id="successMessage" class="success-message">
+                    Workout logged successfully! 🎉
+                </div>
+                
+                <div id="errorMessage" class="error-message">
+                    Something went wrong. Please try again.
+                </div>
+                
+                <form id="workoutForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="workoutGroup">Workout Group</label>
+                        <select id="workoutGroup" name="workoutGroup" required>
+                            <option value="">Select workout type</option>
+                            <option value="Push">Push</option>
+                            <option value="Pull">Pull</option>
+                            <option value="Legs">Legs</option>
+                            <option value="Upper Body">Upper Body</option>
+                            <option value="Lower Body">Lower Body</option>
+                            <option value="Full Body">Full Body</option>
+                            <option value="Cardio">Cardio</option>
+                            <option value="Core">Core</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Exercises</label>
+                        <div id="exercisesContainer">
+                            <!-- Exercises will be added dynamically here -->
+                        </div>
+                        <button type="button" id="addExerciseBtn" class="add-set-btn">+ Add Exercise</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Notes (Optional)</label>
+                        <textarea id="notes" name="notes" placeholder="How did the workout feel? Any observations?"></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submitBtn">Log Workout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PWA Install Prompt -->
+    <div id="installPrompt" class="install-prompt">
+        <div class="install-prompt-content">
+            <div class="install-prompt-icon">💪</div>
+            <div class="install-prompt-text">
+                <h3>Install My Workout Tracker</h3>
+                <p>Add to your home screen for quick access!</p>
+            </div>
+        </div>
+        <div class="install-prompt-actions">
+            <button class="install-btn" id="installBtn">Install</button>
+            <button class="dismiss-btn" id="dismissBtn">Maybe Later</button>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="./offline.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
