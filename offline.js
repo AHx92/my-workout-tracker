@@ -151,17 +151,19 @@ class OfflineManager {
   }
   
   // Get all pending (unsynced) workouts
-  getPendingWorkouts() {
-    return new Promise((resolve, reject) => {
-      const transaction = this.db.transaction(['workouts'], 'readonly');
-      const store = transaction.objectStore('workouts');
-      const index = store.index('synced');
-      const request = index.getAll(false); // Get all where synced = false
-      
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.error);
-    });
-  }
+getPendingWorkouts() {
+  return new Promise((resolve, reject) => {
+    const transaction = this.db.transaction(['workouts'], 'readonly');
+    const store = transaction.objectStore('workouts');
+    const index = store.index('synced');
+    
+    // Use IDBKeyRange for the boolean value
+    const request = index.getAll(IDBKeyRange.only(false));
+    
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
   
   // Sync all pending workouts
   async syncPendingWorkouts() {
