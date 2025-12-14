@@ -3,12 +3,12 @@
 
 const CACHE_NAME = 'my-workout-tracker-v1';
 const CACHE_URLS = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/offline.js',
-  '/manifest.json'
+  './',
+  './index.html',
+  './styles.css',
+  './app.js',
+  './offline.js',
+  './manifest.json'
 ];
 
 // Install event - cache app shell
